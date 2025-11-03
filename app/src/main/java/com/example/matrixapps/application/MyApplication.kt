@@ -1,4 +1,4 @@
-package com.regev.tmdbApp.application
+package com.example.matrixapps.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

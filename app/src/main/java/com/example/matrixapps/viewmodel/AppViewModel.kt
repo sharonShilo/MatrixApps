@@ -21,8 +21,8 @@ class AppViewModel @Inject constructor( private val repository: Repository) : Vi
     private val _top25PaidApps = MutableStateFlow<List<App>>(emptyList())
     val top25PaidApps: StateFlow<List<App>> = _top25PaidApps
 
-    private val _favorites = MutableStateFlow<List<App>>(emptyList())
-    val favorites: StateFlow<List<App>> = _favorites
+    private val _favorites = MutableStateFlow<Set<String>>(emptySet())
+    val favorites: StateFlow<Set<String>> = _favorites
 
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading
@@ -57,9 +57,7 @@ class AppViewModel @Inject constructor( private val repository: Repository) : Vi
     private fun listenToFavorite() {
         viewModelScope.launch {
             repository.getFavorites().collect { favoritesFromDb ->
-                _favorites.value = favoritesFromDb.map { favoriteApp ->
-                    repository.convertFavoriteAppToApp(favoriteApp)
-                }
+                _favorites.value = favoritesFromDb.map { it.id }.toSet()
             }
         }
     }
