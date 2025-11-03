@@ -16,7 +16,7 @@ interface FavoriteDao {
     suspend fun removeFavorite(cachedFavoriteMedia: FavoriteApp)
 
     @Query("SELECT * FROM favorites")
-    suspend fun getFavorites(): Flow<List<FavoriteApp>>
+    fun getFavorites(): Flow<List<FavoriteApp>>
 
     @Query("SELECT EXISTS(SELECT 1 FROM favorites WHERE id = :id)")
     suspend fun isFavorite(id: String): Boolean

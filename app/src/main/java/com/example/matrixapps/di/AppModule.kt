@@ -2,6 +2,7 @@ package com.regev.tmdbApp.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.matrixapps.local.AppDatabase
 import com.example.matrixapps.local.FavoriteDao
 import com.example.matrixapps.repository.Repository
 import com.regev.tmdbApp.network.AppleMarketService
@@ -34,7 +35,6 @@ object AppModule {
         return Repository(appleMarketService, favoriteDao)
     }
 
-    /*
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
@@ -47,9 +47,5 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideImageCachedDao(database: AppDatabase) = database.imageCacheDao()
-
-    @Provides
-    @Singleton
-    fun provideFavoriteDao(database: AppDatabase) = database.favoriteDao()*/
+    fun provideFavoriteDao(database: AppDatabase) = database.favoriteDao()
 }

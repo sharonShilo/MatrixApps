@@ -9,5 +9,5 @@ data class Feed(
     val country: String,
     val icon: String,
     val updated: String,
-    val results: List<AppResult>
+    val results: List<App>
 )
