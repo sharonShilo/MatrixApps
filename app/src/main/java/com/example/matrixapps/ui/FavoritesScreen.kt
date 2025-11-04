@@ -16,11 +16,12 @@ import com.example.matrixapps.viewmodel.AppViewModel
 @Composable
 fun FavoritesScreen(viewModel: AppViewModel = hiltViewModel()) {
     val favorites by viewModel.favorites.collectAsState()
+    val topFreeApps by viewModel.topFreeApps.collectAsState()
+    val topPaidApps by viewModel.top25PaidApps.collectAsState()
 
 
-    val favoriteApps = remember(favorites) {
-        viewModel.topFreeApps.value + viewModel.top25PaidApps.value
-            .filter { favorites.contains(it.id) }
+    val favoriteApps = remember(favorites, topFreeApps, topPaidApps) {
+        (topFreeApps + topPaidApps).filter { favorites.contains(it.id) }
     }
 
     LazyVerticalGrid(columns = GridCells.Fixed(2), modifier = Modifier.padding(8.dp)) {

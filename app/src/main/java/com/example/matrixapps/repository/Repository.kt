@@ -37,7 +37,7 @@ class Repository @Inject constructor(
             id = app.id,
             name = app.name,
             artistName = app.artistName,
-            artworkUrl = app.artworkUrl,
+            artworkUrl100 = app.artworkUrl100,
             releaseDate = app.releaseDate,
             genreNames = app.genres.joinToString(", ") { it.name }
         )
@@ -48,10 +48,10 @@ class Repository @Inject constructor(
             id = favoriteApp.id,
             name = favoriteApp.name,
             artistName = favoriteApp.artistName,
-            artworkUrl = favoriteApp.artworkUrl,
             releaseDate = favoriteApp.releaseDate,
             genres = favoriteApp.genreNames.split(", ").map { Genre("", it, "") },
             url = "https://apps.apple.com/us/app/id$favoriteApp.id",
+            artworkUrl100 = favoriteApp.artworkUrl100
         )
     }
 }

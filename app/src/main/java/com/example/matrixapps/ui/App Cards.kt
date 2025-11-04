@@ -32,7 +32,7 @@ fun AppCardSmall(app: App, isFavorite: Boolean, onFavoriteClick: (App) -> Unit) 
     Card(modifier = Modifier.padding(8.dp).width(120.dp)) {
         Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.padding(8.dp)) {
             AsyncImage(
-                model = app.artworkUrl,
+                model = app.artworkUrl100,
                 contentDescription = app.name,
                 modifier = Modifier.size(80.dp).clip(RoundedCornerShape(12.dp)),
                 contentScale = ContentScale.Crop
@@ -54,7 +54,7 @@ fun AppCardLarge(app: App, isFavorite: Boolean, onFavoriteClick: (App) -> Unit) 
     Card(modifier = Modifier.padding(8.dp).fillMaxWidth()) {
         Row(modifier = Modifier.padding(8.dp)) {
             AsyncImage(
-                model = app.artworkUrl,
+                model = app.artworkUrl100,
                 contentDescription = null,
                 modifier = Modifier.size(80.dp).clip(RoundedCornerShape(12.dp)),
                 contentScale = ContentScale.Crop

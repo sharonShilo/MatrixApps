@@ -4,8 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.matrixapps.model.App
-import com.example.matrixapps.model.FavoriteApp
-import com.example.matrixapps.model.Genre
 import com.example.matrixapps.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

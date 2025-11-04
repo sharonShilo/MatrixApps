@@ -8,7 +8,7 @@ data class FavoriteApp(
     @PrimaryKey val id: String,
     val name: String,
     val artistName: String,
-    val artworkUrl: String,
+    val artworkUrl100: String,
     val releaseDate: String,
     val genreNames: String
 )

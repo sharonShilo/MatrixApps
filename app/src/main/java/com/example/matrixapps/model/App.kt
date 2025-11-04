@@ -5,7 +5,7 @@ data class App(
     val id: String,
     val name: String,
     val releaseDate: String,
-    val artworkUrl: String,
+    val artworkUrl100: String,
     val genres: List<Genre>,
     val url: String
 )

@@ -1,6 +1,7 @@
 package com.example.matrixapps.ui
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,14 +36,28 @@ fun HomeScreen(viewModel: AppViewModel = hiltViewModel()) {
 
     LazyColumn {
         item {
-            Text("Top Free Apps", style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.padding(16.dp))
-            HorizontalAppList(apps = freeApps, favorites = favorites, onFavoriteClick = viewModel::toggleFavorite)
+            Text(
+                "Top Free Apps", style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(16.dp)
+            )
+            HorizontalAppList(
+                apps = freeApps,
+                favorites = favorites,
+                onFavoriteClick = viewModel::toggleFavorite
+            )
 
         }
         item {
-            Text("Top Paid Apps", style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(16.dp))
-            VerticalAppList(apps = paidApps, favorites = favorites, onFavoriteClick = viewModel::toggleFavorite)
+            Text(
+                "Top Paid Apps",
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(16.dp)
+            )
+            VerticalAppList(
+                apps = paidApps,
+                favorites = favorites,
+                onFavoriteClick = viewModel::toggleFavorite
+            )
         }
     }
 
@@ -53,18 +68,21 @@ fun HomeScreen(viewModel: AppViewModel = hiltViewModel()) {
 fun HorizontalAppList(apps: List<App>, favorites: Set<String>, onFavoriteClick: (App) -> Unit) {
     LazyRow {
         items(apps) { app ->
-            AppCardSmall(app = app, isFavorite = favorites.contains(app.id), onFavoriteClick = onFavoriteClick)
+            AppCardSmall(
+                app = app,
+                isFavorite = favorites.contains(app.id),
+                onFavoriteClick = onFavoriteClick
+            )
         }
     }
 }
 
 
 @Composable
-fun VerticalAppList(apps: List<App>, favorites: Set<String> ,onFavoriteClick: (App) -> Unit) {
-    LazyColumn {
-        items(apps) { app ->
+fun VerticalAppList(apps: List<App>, favorites: Set<String>, onFavoriteClick: (App) -> Unit) {
+    Column {
+        apps.forEach { app ->
             AppCardLarge(app, favorites.contains(app.id), onFavoriteClick)
-
         }
     }
 }
